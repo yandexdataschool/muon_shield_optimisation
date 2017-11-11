@@ -1,9 +1,9 @@
 \documentclass[a4paper]{jpconf}
-
+ 
 \usepackage{float}
-\usepackage{amsmath} 
-\usepackage{amssymb}
-\usepackage{amsfonts}
+%\usepackage{amsmath} 
+%\usepackage{amssymb}
+%\usepackage{amsfonts}
 \usepackage{epstopdf}
 \usepackage{color,fancybox,graphicx}
 \usepackage{url}
@@ -13,7 +13,7 @@
 \usepackage{graphicx,rotating,booktabs}
 \usepackage{xcolor}
 \usepackage{iopams}
-\usepackage{amsthm}
+%\usepackage{amsthm}
 
 \usepackage{amssymb,amsmath,amsthm,amsfonts}
 \usepackage{framed}
@@ -46,8 +46,8 @@
 \usepackage[small,bf]{caption}
 \setlength{\captionmargin}{25pt}
 
-\definecolor{newgreen}{rgb}{0.0, 0.5, 0.3}
-\definecolor{newblue}{rgb}{0.0, 0.1, 0.7}
+%\definecolor{}{rgb}{0.0, 0.5, 0.3}
+%\definecolor{newblue}{rgb}{0.0, 0.1, 0.7}
 
 
 \bibliographystyle{iopart-num}
@@ -60,14 +60,14 @@
 
 \usepackage{tikz}
 
-\usepackage{hyperref}
-\hypersetup{
-  colorlinks = true,
-  urlcolor = blue, 
-  linkcolor = blue,
-  citecolor = newgreen,
-}
-\usepackage{subcaption}
+%\usepackage{hyperref}
+%\hypersetup{
+ % colorlinks = true,
+ % urlcolor = blue, 
+ % linkcolor = blue,
+ % citecolor = newgreen,
+%}
+%\usepackage{subcaption}
 
 
 
@@ -115,9 +115,16 @@
 
 
 \title{Active Muon Shield for the SHiP Experiment at CERN}
-\author{}
-\address{Yandex School of Data Analysis, Higher School of Economics, Imperial College London, Skoltech}
-\ead{}
+\author{A.~Baranov$^{1,2,\dagger}$, E.~Burnaev$^{3}$,  D.~Derkach$^{1,\dagger}$, A.~Filatov$^{1,\dagger}$,
+  N.~Klyuchnikov$^{3}$,  F.~Ratnikov$^{1,2,\dagger}$,
+  A.~Ustyuzhanin$^{1,2,\dagger}$  and
+ A.~Zaitsev$^{3}$
+}
+\address{$^1$ National Research University Higher School of Economics,  Moscow, Russia \\
+$^2$ Yandex School of Data Analysis, Moscow, Russia \\
+$^3$ Skolkovo Institute of Science and Technology, Moscow, Russia \\
+$^\dagger$ on behalf of the LHCb Collaboration}
+\ead{filatovartm@gmail.com}
 
 \begin{abstract}
 The SHiP experiment is designed to search for very weakly interacting particles beyond the Standard Model which are produced in a 400 GeV/c proton beam dump at the CERN SPS. An essential task for the experiment is to keep the Standard Model background level negligible. In the beam dump, around $10^{11}$ muons will be produced per second. The muon rate in the spectrometer has to be reduced by at least four orders of magnitude to avoid muon-induced backgrounds. It is proved that novel active muon shield may be used to magnetically deflect the muons out of the acceptance of the spectrometer.
@@ -131,11 +138,11 @@ The SHiP experiment is designed to search for very weakly interacting particles 
 \label{intro}
 The Standard Model of elementary particles despite its enormous success has several places for improvement~\cite{Ellis:2009tp}. In particular, the baryon asymmetry of the Universe~\cite{Asaka:2005pn} and a Dark Matter existence are yet to be explained. Heavy Neutral Leptons (HNLs)~\cite{Asaka:2005an}, which are right-handed partners of the Standard Model neutrinos should they be discovered will give a boost in our understanding of both above mentioned riddles of Nature. The existence of such particles is strongly motivated by theory and were searched extensively previously. Cosmological constraints on the properties of HNLs now indicate that the majority of the interesting parameter space for such particles was beyond the reach of the previous searches at the PS191~\cite{Bernardi:1985ny}, BEBC~\cite{CooperSarkar:1985nh}, CHARM~\cite{Bergsma:1985is}, CCFR and NuTeV~\cite{Vaitaitis:1999wq} experiments. 
 
-For this reasons, a new fixed-target experiment at the CERN SPS accelerator was proposed~\cite{Bonivento:2013jag}. The proposed experiment will use a 400~GeV proton beam on a fixed target to produce a large number of charm mesons. The HNLs from charm meson decays have a significant polar angle with respect to the beam direction, approximately 50 mrad on average. In order to maximise the geometric
+For this reasons, a new fixed-target experiment at the CERN SPS accelerator was proposed~\cite{Bonivento:2013jag}. This experiment will use a 400~GeV proton beam on a fixed target to produce a large number of charm mesons. The HNLs from charm meson decays have a significant polar angle with respect to the beam direction, approximately 50 mrad on average. In order to maximise the geometric
 acceptance for a given transverse size of the detector, the detection volume must therefore be placed
 as close as possible to the target. The production of the charm mesons is accompanied by copious direct production of pions, kaons and short-lived light resonances. The subsequent decays of these particles would result in a large flux of muons and neutrinos. To minimise these decays, a combination of a target and a hadron absorber of a few metres length, both made of as dense a material as possible, is required. To reduce the detector occupancy and backgrounds induced by the residual muon flux, a muon shield is required downstream of the hadron absorber. The experimental set-up must therefore balance the opposing requirements of locating the detector as close as possible to the target and of accommodating a sufficiently long muon shield upstream of the fiducial volume of the detector to reduce muon-induced backgrounds.
 
-\section{Bayesian Optimisation}
+\section{Bayesian Optimization}
 The main goal of our research was to find a light and efficient shield. In order to achieve this, we applied a Bayesian optimization algorithm. In this section we give an introduction to this method and motivation behind that approach.
 
 Let $f(x)$ be a black-box function on $X \subset R^d$, which does not have an analytic expression and can be evaluated at a specific point only by conducting computationally intensive simulations, which in turn can yield noisy observations of the form $y_i = f(x_i) + \epsilon_i$, where $\epsilon_i$ is the random variable with zero mean and constant variance. Our ultimate goal is to find a point $x_*$ where $f(x_*)$ is a true global optimum (henceforth without loss of generality we will consider a maximisation problem). In this problem setup, the general framework for optimum searching iteratively constructs the sample $D_N = \{(x_i, y_i)\}_{i=1…}^N$, each iteration consists of three steps:
@@ -152,7 +159,7 @@ If $f(x)$ is Lipschitz-continuous with a Lipschitz continuity constant C, $X$ is
 
 Strong convergence guarantee is provided against the worst-case scenario, however the solution in this case will typically require an impractically large number of simulations for any reasonable accuracy of approximation. Since such scenarios are not plausible in practice and the number of simulations is very limited, next idea that comes is to relax guarantees in order to meet practical limitations, yet insure against average-cases. 
 
-Bayesian approach to optimization allows implementing the idea of guarantees relaxation for the sake of practical applicability by providing specific choosing strategies (step \ref{point_choosing}) in the framework for optimum search. In this approach, the objective function is approximated with \emph{a surrogate model}, that is, a parametric function for which prior knowledge of parameters combined with likelihood of the observed sample defines a posterior distribution over the parametric family. Choice of new points to simulate is guided by \emph{the principle of minimum expected risk} (its formalization under the Bayesian framework has been provided in \cite{Burnaev2015}) resulting in a secondary optimization problem, which in turn depends not on the original function, but on its computationally cheaper surrogate-model.
+Bayesian approach to optimization allows implementing the idea of guarantees relaxation for the sake of practical applicability by providing specific choosing strategies (step \ref{point_choosing}) in the framework for optimum search. In this approach, the objective function is approximated with \emph{a surrogate model}, that is, a parametric function for which prior knowledge of parameters combined with likelihood of the observed sample defines a posterior distribution over the parametric family. Choice of new points to simulate is guided by \emph{the principle of minimum expected risk} (its formalisation under the Bayesian framework has been provided in \cite{Burnaev2015}) resulting in a secondary optimization problem, which in turn depends not on the original function, but on its computationally cheaper surrogate-model.
 
 The most popular choice for building surrogate models in the field of engineering design is based on taking \emph{Gaussian processes} as a parametric family of priors along with assuming there is white noise in the observations $\epsilon_i = \mathcal{N}(0, \sigma^2)$. By definition \cite{rasmussen2006gaussian,Burnaev2016} Gaussian process is a collection of random variables, any finite number of which have a joint Gaussian distribution. Consequently it is completely specified by its mean function $m(x) = \mathbb{E}[f(x)]$ and the covariance function $k(x, x') = \mathbb{E}[(f(x) - m(x))(f(x') - m(x'))]$. The most important property of Gaussian processes for Bayesian optimization is that posterior takes also a form of Gaussian process, moreover its mean and covariance functions have analytic expressions:
 \begin{itemize}
@@ -182,71 +189,109 @@ where $Z = \frac{\hat{f}_N(x) - f(x_+)}{\hat{\sigma}_N^2(x)}$, $\phi$ and $\Phi$
 
 \section{SHiP shield optimization}
 
-A critical component of SHiP is the muon shield, which deflects the high flux of muons produced in the target, that would represent a very serious  background for the particle searches, away from the detector. The shield consists of 8 magnets and each magnet is parameterised by 7 values: length, width, etc. Because the cost of the muon shield is non-negligibe we include the weight of the muon shield as a proxy for the cost. Therefore, our aim is to find the most efficient solution at a lowest cost possible. We applied to Bayesian optimization method to that task. The optimisation is performed for a chosen material, thus the material balance is discussed elsewhere~\cite{Akmete:2017bpl}.
+A critical component of SHiP is the muon shield, which deflects the
+high flux of muons produced in the target, that would represent a very
+serious  background for the particle searches, away from the
+detector. The shield consists of 8 magnets and each magnet is
+parameterised by 7 values: length, width, etc. Because the cost of the
+muon shield is significant we include the weight of the muon shield as
+a proxy for the cost. Therefore, our aim is to find the most efficient
+solution at a lowest cost possible. We apply Bayesian optimization
+method to this task. The optimization is performed for already chosen material, thus the material balance is discussed elsewhere~\cite{Akmete:2017bpl}.
 
-For the evaluation of the shield performance we used 18 million simulated events passed through the detection configuration described in~\cite{Akmete:2017bpl}. In the simulation, proton fixed target collisions are generated by PYTHIAv8~\cite{Pythia8},
-inelastic neutrino interactions by GENIE~\cite{Genie} and inelastic muon interactions by PYTHIA6~\cite{Pythia6}. The heavy flavour cascade production is also taken into account~\cite{Cascade}.  The SHiP detector response is simulated in the GEANT4~\cite{Geant4} framework. The simulation is done within the FAIRROOT framework~\cite{FAIRROOT}. 
+For the evaluation of the shield performance we use 18 million
+simulated events passed through the detection configuration described
+in~\cite{Akmete:2017bpl}. In the simulation, proton fixed target
+collisions,  inelastic neutrino interactions, and  inelastic muon interactions
+are generated by PYTHIA8~\cite{Pythia8}, GENIE~\cite{Genie}, and
+PYTHIA6~\cite{Pythia6} respectively. 
+Heavy flavour cascade production is also taken into
+account~\cite{Cascade}.  The SHiP detector response is simulated in
+the GEANT4~\cite{Geant4} framework. 
+The simulation is done within the FAIRROOT framework~\cite{FAIRROOT}. 
 
-The transverse $(x,y)$ position of muons is obtained at the last tracking station by tracing them $64\mathrm{m}$ downstream of the shield. For muons with $|y| < 5\mathrm{m}$, their $x$-position is converted into $\sigma_{\mu^+} =  \sqrt{1 - (x_\mu / \mathrm{cm} + 300) / 560}$ for $-300< x < 260\mathrm{cm}$, else $\sigma_{\mu^+} = 0$ \cite{Akmete:2017bpl}.
+The transverse $(x,y)$ position of muons is obtained at the last
+tracking station by tracing them $64\mathrm{m}$ downstream of the
+shield. For positively charged muons with $|y| < 5\mathrm{m}$, their
+$x$-position is converted into $\sigma_{\mu^+}=  \sqrt{1 - (x_\mu /
+  \mathrm{cm} + 300) / 560}$ for $-300< x < 260\mathrm{cm}$, else
+$\sigma_{\mu^+} = 0$ \cite{Akmete:2017bpl}.  $\sigma_{\mu^-}$ for
+negatively charged muons is described similarly.
 
-\begin{figure}[H]
-\center{\includegraphics[width=0.4\linewidth]{pics/sigma.png}}
-\caption{$\sigma_{\mu}$}
-\label{fig:1}
-\end{figure}
 
-Now we can introduce the complete loss function, that will depend on the physical performance of the shield, its weight and implicitly via the weight: the length.
+%\begin{figure}[H]
+%\center{\includegraphics[width=0.4\linewidth]{pics/sigma.png}}
+%\caption{$\sigma_{\mu}$}
+%\label{fig:1}
+%\end{figure}
+
+Now we can introduce the complete loss function, that depends on the
+physical performance of the shield, its weight and the length, the
+later  implicitly via the weight.
 \[
 L(\Sigma, W) = (1 + \Sigma) (1 + \exp^{\frac{W - W_{0}}{W_{0}}}),
 \]
-where $\Sigma  = \sum_{\mu} \sigma_{\mu}$, $W$ is a weight of configuration and $W_{0}$ is a weight of a baseline~\cite{Akmete:2017bpl}. The weight of the baseline is about 1900 tons and $\Sigma$ is approximately equal to 32. As can be seen, weight is penalized exponentially because we are not interested in the heavy regions, as we will not be able to construct such configurations due to budget constraints.
+where $\Sigma  = \sum_{\mu} \sigma_{\mu}$, $W$ is a weight of
+configuration and $W_{0}$ is a weight of a baseline
+configuration~\cite{Akmete:2017bpl} ahown in Fig.\ref{fig:baseline}. The weight of the baseline is about 1900 tons and $\Sigma$ is approximately equal to 32. As can be seen, weight is penalized exponentially because we are not interested in the heavy regions, as we will not be able to construct such configurations due to budget constraints.
 
 
 \begin{figure}[H]
 \center{\includegraphics[width=0.4\linewidth]{pics/baseline.png}}
-\caption{Baseline configuration}
+\caption{\label{fig:baseline}Baseline configuration}
 \end{figure}
 
-The following problems were addressed during the optimisation:
+The following problems is addressed during the optimization:
 \begin{enumerate}
-\item Optimisation is performed in 42 dimensional space
+\item Optimization is performed in 42-dimensional space
 \item Computation of the $\Sigma$ is time consuming.
-\item Computation of the $\Sigma$ is noisy due to Monte - Carlo simulations.
+\item Computation of the $\Sigma$ is noisy due to limited statistics
+  in Monte - Carlo simulations.
 \end{enumerate}
 
-We have chosen only 500k muons with the biggest momentum and discarded all the low-momentum muons. It helped us to decrease the time of computations 8 times on average. We also introduced noise as a prior knowledge into Gaussian Process: in this setup GP tries to estimate the noise of the computation and incorporate it into final variance. The points were computed in batches of 100 points to optimise the usage of the available computing resources.
+We choose only 500k muons with the biggest momentum and discard
+all the low-momentum muons. It helps us to decrease the time of
+computations by factor of  8 times in average. We also introduce noise
+as a prior knowledge into Gaussian Process: in this setup GP tries to
+estimate the noise of the computation and incorporate it into final
+variance. The points are computed in batches of 100 points to optimise
+the usage of the available computing resources. The process of
+optimization is illustrated in Fig.~\ref{fig:evolution}
 
 \begin{figure}[H]
 \center{\includegraphics[width=0.4\linewidth]{pics/opt}}
-\caption{Evolution of the best known point}
+\caption{\label{fig:evolution}Evolution of the best known point}
 \end{figure}
 
 
-After 5000 iterations we have stopped the optimisation procedure. Discovered configuration is lighter by 25 \% than baseline and have the same rejection capability. 
+The optimization procedure is stopped after 5000 iterations. 
+The obtained configuration is found to be lighter by 25 \% than the baseline while having the same rejection capability. 
 
 \begin{figure}[H]
 \centering
-\begin{subfigure}{.5\textwidth}
-  \centering
-  \includegraphics[width=.7\linewidth]{pics/solution}
-  \caption{Behaviour of the discovered configuration}
-  \label{fig:sub1}
-\end{subfigure}%
-\begin{subfigure}{.5\textwidth}
-  \centering
-  \includegraphics[width=.7\linewidth]{pics/sol_2.png}
-  \caption{Discovered configuration}
-  \label{fig:sub2}
-\end{subfigure}
-\caption{Optimisation results}
-\label{fig:sub2}
+\begin{minipage}[c]{0.45\textwidth}
+\includegraphics[width=0.9\textwidth]{pics/solution}
+ \caption{\label{fig:sub1} Behaviour of the discovered configuration}
+ \end{minipage}
+\begin{minipage}[c]{0.45\textwidth}
+  \includegraphics[width=0.9\textwidth]{pics/sol_2.png}
+  \caption{\label{fig:sub2} Discovered configuration}
+\end{minipage}  
 \end{figure}
 
-Figure \ref{fig:sub1} indicates the distribution of the $\Sigma$ for the discovered configuration after multiple simulations with different random seeds. We can see that the mean of the distribution is bigger than $\Sigma$ for the baseline, but values are still low.
+Fig.~\ref{fig:sub1} indicates the distribution of the $\Sigma$ for the
+discovered configuration after multiple simulations with different
+random seeds. We can see that the mean of the distribution is bigger
+than $\Sigma$ for the baseline, but values are still low.  Fig.~\ref{fig:sub2} illustrates the new found configuration.
 
 \section{Conclusion}
 
-Bayesian optimisation is a powerful tool which can be applied for the optimisation of non-differentiable functions. We have demonstrated that this method can be successfully applied even to complicated optimisation problems in physics. While GP can guarantee global optionality under ideal conditions, these are not satisfied in this particular problem
+Bayesian optimization is a powerful tool which can be applied for the
+optimization of non-differentiable functions. We have demonstrated
+that this method can be successfully applied even to 
+complicated optimization problems in physics. 
+However in spite of GP can guarantee global optionality under ideal
+conditions,  these are not satisfied for this particular problem.
 
 \ack
 
