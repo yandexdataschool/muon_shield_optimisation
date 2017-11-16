@@ -218,8 +218,8 @@ scoring plane 64m downstream of the muon shield at the z of the first
 tracking station of the spectrometer. All subsystems downstream of the
 muon shield are removed.
 
-Proton fixed target collisions,  inelastic neutrino interactions, and  inelastic muon interactions
-are simulated using PYTHIA8~\cite{Pythia8}, GENIE~\cite{Genie}, and
+Proton fixed target collisions  and  inelastic muon interactions
+are simulated using PYTHIA8~\cite{Pythia8} and
 PYTHIA6~\cite{Pythia6} respectively. 
 
 Heavy flavour cascade production is also taken into
@@ -229,7 +229,7 @@ The simulation is done within the FAIRROOT framework~\cite{FAIRROOT}.
 
 The transverse $(x,y)$ position of muons is obtained at the first
 tracking station. For muons with $|y| < 5\mathrm{m}$, their
-$x$-position is converted into $\sigma_{\mu^{\pm}}=  \sqrt{(260 \mp
+$x$-position is converted into ``importance weight'' $\sigma_{\mu^{\pm}}=  \sqrt{(260 \mp
   x_\mu /  \mathrm{cm})  / 560}$ for $-300< x_\mu < 260$ and $-260<x_\mu<300
 \mathrm{cm}$ for positive and negative muons respectively, else
 $\sigma_{\mu^+} = 0$ \cite{Akmete:2017bpl}.  
@@ -253,10 +253,10 @@ Fig.\ref{fig:baseline}. The weight of the baseline is about 1900 tons
 and $\Sigma$ is approximately equal to 32. As can be seen, weight is
 penalised exponentially because we are not interested in the heavy
 regions, as we will not be able to construct such configurations due
-to budget and engenering constraints.
+to budget and  engineering constraints.
 
 
-\begin{figure}[H]
+\begin{figure}[tbh]
 \center{\includegraphics[width=0.4\linewidth]{pics/baseline.png}}
 \caption{\label{fig:baseline}Baseline configuration of the SHiP muon
   shield, as described in \cite{Akmete:2017bpl}.}
@@ -285,7 +285,7 @@ variance. The points are computed in batches of 100 points to optimise
 the usage of the available computing resources. The process of
 optimisation is illustrated in Fig.~\ref{fig:evolution}.
 
-\begin{figure}[H]
+\begin{figure}[tbh]
 \centering
 \begin{minipage}[c]{0.45\textwidth}
 \includegraphics[width=0.9\linewidth]{pics/opt}
@@ -303,28 +303,18 @@ optimisation is illustrated in Fig.~\ref{fig:evolution}.
 
 The optimisation procedure is stopped after 5000 iterations. 
 The obtained configuration is found to be lighter by 25 \% than the
-baseline while having about  the same rejection capability, illustrated in
+baseline while having about  the same rejection capability as illustrated in
 Fig. \ref{fig:scores}.
+Fig.~\ref{fig:sub2} illustrates the new found configuration.
 
-\begin{figure}[H]
+\begin{figure}[tbh]
 \centering
-\begin{minipage}[c]{0.45\textwidth}
-\includegraphics[width=0.7\textwidth]{pics/solution}
- \caption{\label{fig:sub1} Behaviour of the best found muon shield configuration
-   for the SHiP detector}
- \end{minipage}
-\begin{minipage}[c]{0.45\textwidth}
-  \includegraphics[width=0.9\textwidth]{pics/sol_2.png}
+\includegraphics[width=0.4\textwidth]{pics/sol_2.png}
   \caption{\label{fig:sub2} The best found muon shield configuration
    for the SHiP detector}
-\end{minipage}  
 \end{figure}
 
-Fig.~\ref{fig:sub1} indicates the distribution of the $\Sigma$ for the
-discovered configuration after multiple simulations with different
-random seeds. We can see that the mean of the distribution is bigger
-than $\Sigma$ for the baseline, but values are still low.  Fig.~\ref{fig:sub2} illustrates the new found configuration.
-
+ 
 \section{Conclusion}
 
 Bayesian optimisation is a powerful tool which can be applied for the
