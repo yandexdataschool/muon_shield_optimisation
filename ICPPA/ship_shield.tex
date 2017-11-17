@@ -22,7 +22,7 @@
 \usepackage{enumitem}
 
 \usepackage{lineno}
-\linenumbers
+%\linenumbers
 
 
 
@@ -144,7 +144,13 @@ is demonstrated that new improved active muon shield may be used to magnetically
 
 \section{Introduction}
 \label{intro}
-The Standard Model of elementary particles despite its enormous success has several places for improvement~\cite{Ellis:2009tp}. In particular, the baryon asymmetry of the Universe~\cite{Asaka:2005pn} and a Dark Matter existence are yet to be explained. Heavy Neutral Leptons (HNLs)~\cite{Asaka:2005an}, which are right-handed partners of the Standard Model neutrinos should they be discovered will give a boost in our understanding of both above mentioned riddles of Nature. The existence of such particles is strongly motivated by theory and were searched extensively previously. Cosmological constraints on the properties of HNLs now indicate that the majority of the interesting parameter space for such particles was beyond the reach of the previous searches at the PS191~\cite{Bernardi:1985ny}, BEBC~\cite{CooperSarkar:1985nh}, CHARM~\cite{Bergsma:1985is}, CCFR and NuTeV~\cite{Vaitaitis:1999wq} experiments. 
+The Standard Model of elementary particles despite its enormous
+success, has several places for improvement~\cite{Ellis:2009tp}. In
+particular, the baryon asymmetry of the Universe~\cite{Asaka:2005pn}
+and a Dark Matter existence are yet to be explained. 
+The discovery of heavy neutral leptons (HNLs), right handed partners
+of the Standard Model neutrinos, would solve both above mentioned riddles of Nature.
+The existence of such particles is strongly motivated by theory and were searched extensively previously. Cosmological constraints on the properties of HNLs now indicate that the majority of the interesting parameter space for such particles was beyond the reach of the previous searches at the PS191~\cite{Bernardi:1985ny}, BEBC~\cite{CooperSarkar:1985nh}, CHARM~\cite{Bergsma:1985is}, CCFR and NuTeV~\cite{Vaitaitis:1999wq} experiments. 
 
 For this reasons, a new fixed-target experiment at the CERN SPS accelerator was proposed~\cite{Bonivento:2013jag}. This experiment will use a 400~GeV proton beam on a fixed target to produce a large number of charm mesons. The HNLs from charm meson decays have a significant polar angle with respect to the beam direction, approximately 50 mrad on average. In order to maximise the geometric
 acceptance for a given transverse size of the detector, the detection volume must therefore be placed
@@ -191,7 +197,8 @@ Expression \ref{eq:min_expected_deviation} is computationally expensive since it
 \label{EI}
 x_{i + 1} = \underset{x}{\textup{argmin}}\ \mathbb{E}[\textup{max}\{0, f(x) - f(x_+)\}  | D_i],
 \end{equation} 
-where $x_+ = \underset{j = 1..i}{\textup{max}}\ y_i$
+%where $x_+ = \underset{j = 1..i}{\textup{max}}\ y_i$
+where $x_+ = \underset{x_i}{\textup{argmax}}\  f(x_i)$.
 Expected Improvement has also been shown to converge under additional mild assumptions \cite{vazquez2010convergence}, but its main advantage is a closed-form expression, that doesn't require numerical integration:
 \begin{equation}
 \label{EI:closed_form}
@@ -215,7 +222,7 @@ techniques to solve this problem. The optimisation is performed for already chos
 For the evaluation of the shield performance we use 18 million
 simulated events passed through the muon shield and measured at a
 scoring plane 64m downstream of the muon shield at the z of the first
-tracking station of the spectrometer. All subsystems downstream of the
+tracking station of the spectrometer. All other subsystems downstream of the
 muon shield are removed.
 
 Proton fixed target collisions  and  inelastic muon interactions
@@ -250,7 +257,7 @@ where $\Sigma  = \sum_{\mu} \sigma_{\mu}$, $W$ is a weight of
 configuration and $W_{0}$ is a weight of a baseline
 configuration~\cite{Akmete:2017bpl} shown in
 Fig.\ref{fig:baseline}. The weight of the baseline is about 1900 tons
-and $\Sigma$ is approximately equal to 32. As can be seen, weight is
+and $\Sigma$ for the baseline is approximately equal to 32. As can be seen, weight is
 penalised exponentially because we are not interested in the heavy
 regions, as we will not be able to construct such configurations due
 to budget and  engineering constraints.
@@ -269,9 +276,6 @@ The following problems are addressed during the optimisation:
 \item Computation of the $\Sigma$ is noisy due to limited statistics
   in Monte - Carlo simulations.
 \end{enumerate}
-
-We choose only 500k muons with the biggest momentum and discard
-all the low-momentum muons. 
 
 To ensure a more even coverage of the muon phase space, the number of
 muons is capped in bins of momentum and transverse momentum, and
@@ -317,12 +321,7 @@ Fig.~\ref{fig:sub2} illustrates the new found configuration.
  
 \section{Conclusion}
 
-Bayesian optimisation is a powerful tool which can be applied for the
-optimisation of non-differentiable functions. We have demonstrated
-that this method can be successfully applied even to 
-complicated optimisation problems in physics. 
-However even though Gaussian processes can guarantee global optionality under ideal
-conditions,  these are not satisfied for this particular problem.
+Bayesian optimisation is a powerful tool which can be applied for the optimisation of non differentiable functions. Even though Gaussian processes can guarantee global optionality under ideal conditions, these are not satisfied under resouce restrictions constraints. However we have demonstrated that this method can be successfully applied even to complicated optimisation problems in physics.
 
 %\ack
 
