@@ -1,0 +1,12 @@
+\select@language {UKenglish}
+\select@language {UKenglish}
+\contentsline {section}{\numberline {1}Beam line}{3}
+\contentsline {section}{\numberline {2}Proton yield and beam delivery}{4}
+\contentsline {subsection}{\numberline {2.1}Operation with slow-extraction in bunched mode}{5}
+\contentsline {section}{\numberline {3}Target system}{5}
+\contentsline {section}{\numberline {4}Updated experiment layout}{6}
+\contentsline {subsection}{\numberline {4.1}Magnetization of the target hadron stopper}{6}
+\contentsline {subsection}{\numberline {4.2}Free-standing Muon shield}{6}
+\contentsline {subsection}{\numberline {4.3}Vacuum vessel}{6}
+\contentsline {section}{\numberline {5}Experimental Area and Infrastructure}{7}
+\contentsline {section}{\numberline {6}Potential siting of a search for Lepton Flavour Violation experiment}{7}

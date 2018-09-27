@@ -1,0 +1,65 @@
+\documentclass{cernrep}
+
+\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
+             % images in pdf, png or jpg format)
+
+\usepackage{lineno}
+\usepackage{verbatim}
+\linenumbers*[1]
+%\usepackage{}
+% \SetWatermarkLightness{ 0.9 }
+% \SetWatermarkText{DRAFT}
+%\SetWatermarkScale{1.3}
+%\SetWatermarkHorCenter{13cm}
+%\SetWatermarkVerCenter{18cm}
+\usepackage{ifthen}  
+\newboolean{uprightparticles} 
+\setboolean{uprightparticles}{false} %Set true for upright particle symbols 
+
+\input{lhcb-symbols-def.tex}
+
+\begin{document}
+
+\title{SHiP Comprehensive Design Study: Status report}
+
+\author{\includegraphics[height=17mm]{figs/SHiP-Symbol_Black} SHiP Collaboration}
+
+
+\begin{abstract}
+Status of the SHiP experiment and the Comprehensive Design Study (CDS) with focus on the re-optimization, the simulation studies, and the detector and physics performance. 
+\end{abstract}
+
+\keywords{SHiP, Comprehensive Design Study, CDS status report, CERN report.}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begingroup\baselineskip.99\baselineskip
+\tableofcontents
+\endgroup
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\include{Chapters/Introduction/Introduction}
+
+\include{Chapters/BeamLine/BeamLine}
+
+%\include{Chapters/Simulation/Simulation}
+
+%\include{Chapters/ScatteringSpectrometer/ScatteringSpectrometer}
+
+%\include{Chapters/DecaySpectrometer/DecaySpectrometer}
+
+%\include{Chapters/PhysicsPerformance/PhysicsPerformance}
+
+%\include{Chapters/ProjectPlanning/ProjectPlanning}
+
+%\include{Chapters/Collaboration/Collaboration}
+
+\bibliographystyle{JHEP} %
+\bibliography{thesis} %
+\bibliography{SimulationBiblio} %
+
+% \begin{thebibliography}{99}
+% \end{thebibliography}
+
+\end{document}
